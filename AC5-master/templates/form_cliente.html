@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cadastrar Cliente</title>
+
+        <script type="text/javascript">
+
+            function validar() {
+
+                const nome_cliente = document.getElementById('nome_cliente');
+                const login = document.getElementById('login');
+                const senha = document.getElementById('senha');
+                const cep = document.getElementById('cep');
+
+
+                if (nome_cliente.value === 'Digite o Nome') {
+                    alert("Digite seu Nome.");
+                    return false;
+                }
+                if (login.value === 'Login do usuario') {
+                    alert("Insira seu Login.");
+                    return false;
+                }
+                if (senha.value == "Digite a senha") {
+                    alert("Insira sua senha.");
+                    return false;
+                }
+                if (cep.value == "CEP do Usuario") {
+                    alert("Insira seu CEP.");
+                    return false;
+                }                
+                return true;
+            }
+
+            function salvar() {
+                if (!validar()) return;
+                document.getElementById("form_principal").submit();
+            }
+
+        </script>
+    </head>
+    <body>
+        <form action="/cliente/{{id_cliente}}" method="POST" id="form_principal">
+            {% if id_cliente != 'novo'%}
+                <p>
+                    <label>Id:</label>
+                    {{id_cliente}}
+                </p>
+            {% endif %}
+            <p>
+                <label for="nome_cliente">Nome Cliente:</label>
+                <input type="text" id="nome_cliente" name="nome_cliente" autocomplete="off" value="{{nome_cliente}}" />
+            </p>
+            <p>
+                <label for="login">Login:</label>
+                <input type="text" id="login" name="login" autocomplete="off" value="{{login}}" />
+            </p>
+            <p>
+                <label for="senha">Senha:</label>
+                <input type="text" id="senha" name="senha" autocomplete="off" value="{{senha}}" />
+
+            </p>
+            <p>
+                <label for="cep">CEP:</label>
+                <input type="text" id="cep" name="cep" autocomplete="off" value="{{cep}}" />
+
+            </p>            
+            <p>
+                <button type="button" onclick="javascript:salvar();">Salvar</button>
+                <a href="/" class="botao">Voltar</a>
+            </p>
+        </form>
+    </body>
+    <style>
+        a{
+            color:white;
+            font-size:20px; 
+        }
+        table{
+            color:white;
+            font-size:20px;
+        }
+        header {
+            padding: 0px 10px 10px 10px;
+            border:20px;
+        }
+
+        body{
+            padding-top: 20px;
+            margin-top: 200px;
+            margin-left: 900px;
+            margin: 0 auto;
+            background-image: url(https://c4.wallpaperflare.com/wallpaper/710/191/733/1920x1080-px-8-bit-pixel-art-retro-games-wallpaper-preview.jpg);
+        }
+
+        .menu-op{
+            position: sticky;
+            top: -10%;
+            background-color: rgba(0,0,5,0.8);
+            padding: 10px 330px 10px 10px;
+            color: white;
+            margin: 10 auto;
+            overflow: hidden;
+
+            padding-left: 300px;
+            float: left;
+            text-align: center;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        .menu a{
+            padding-left: 200px;
+            float: left;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        .menu-log {
+            padding-left: 220px;
+            right: auto;
+            float: left;
+        }
+    </style>
+</html>
